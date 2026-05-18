@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地震學作業報告順序表</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+            --break-bg: #fef3c7;
+            --break-text: #b45309;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #1e293b 0%, #2c3e50 100%);
+            padding: 40px 30px;
+            border-radius: 16px;
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-card .label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .info-card .value {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .table-container {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8fafc;
+            padding: 16px 24px;
+            color: var(--text-light);
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-bottom: 2px solid var(--border-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 1rem;
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .time-col {
+            font-weight: 600;
+            color: var(--accent-color);
+            font-family: monospace, sans-serif;
+            font-size: 1.05rem;
+        }
+
+        .name-col {
+            font-weight: 500;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .break-row {
+            background-color: var(--break-bg) !important;
+        }
+
+        .break-row td {
+            color: var(--break-text);
+            font-weight: 700;
+            border-top: 1px solid #fde68a;
+            border-bottom: 1px solid #fde68a;
+        }
+
+        .break-row .time-col {
+            color: var(--break-text);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background-color: #e2e8f0;
+            color: var(--text-light);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 10px;
+            }
+            th, td {
+                padding: 12px 14px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>地震學課本 4.1 與 4.2 節<br>及震源機制解作業報告</h1>
+            <div class="subtitle">口頭報告時間與順序隨機排列組合</div>
+        </header>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <span class="label">📅 報告日期</span>
+                <span class="value">5 月 20 日 (三)</span>
+            </div>
+            <div class="info-card">
+                <span class="label">⏱️ 總時間班表</span>
+                <span class="value">09:15 - 11:50</span>
+            </div>
+            <div class="info-card">
+                <span class="label">⏳ 個人時間</span>
+                <span class="value">報告 5m + 提問 2m</span>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">序號</th>
+                        <th style="width: 30%;">預計時間</th>
+                        <th style="width: 40%;">報告同學</th>
+                        <th style="width: 20%;">狀態</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+    <tr>
+        <td>1</td>
+        <td class="time-col">09:15 - 09:22</td>
+        <td class="name-col">蕭筠安</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+    <tr>
+        <td>2</td>
+        <td class="time-col">09:22 - 09:29</td>
+        <td class="name-col">陳佑昇</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+    <tr>
+        <td>3</td>
+        <td class="time-col">09:29 - 09:36</td>
+        <td class="name-col">林煜宸</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+    <tr>
+        <td>4</td>
+        <td class="time-col">09:36 - 09:43</td>
+        <td class="name-col">陳亞歆</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+    <tr>
+        <td>5</td>
+        <td class="time-col">09:43 - 09:50</td>
+        <td class="name-col">李政暟</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+    <tr>
+        <td>6</td>
+        <td class="time-col">09:50 - 09:57</td>
+        <td class="name-col">黃靖家</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+    <tr>
+        <td>7</td>
+        <td class="time-col">09:57 - 10:04</td>
+        <td class="name-col">何宣樂</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+    <tr>
+        <td>8</td>
+        <td class="time-col">10:04 - 10:11</td>
+        <td class="name-col">洪敏書</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+    <tr>
+        <td>9</td>
+        <td class="time-col">10:11 - 10:18</td>
+        <td class="name-col">邱定軒</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+    <tr>
+        <td>10</td>
+        <td class="time-col">10:18 - 10:25</td>
+        <td class="name-col">張智詠</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+        <tr class="break-row">
+            <td>-</td>
+            <td class="time-col">10:25 - 10:40</td>
+            <td class="name-col" colspan="2">☕ 中場休息 (15 分鐘)</td>
+        </tr>
+        
+    <tr>
+        <td>11</td>
+        <td class="time-col">10:40 - 10:47</td>
+        <td class="name-col">林靖融</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+    <tr>
+        <td>12</td>
+        <td class="time-col">10:47 - 10:54</td>
+        <td class="name-col">鍾秉致</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+    <tr>
+        <td>13</td>
+        <td class="time-col">10:54 - 11:01</td>
+        <td class="name-col">劉韋伯</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+    <tr>
+        <td>14</td>
+        <td class="time-col">11:01 - 11:08</td>
+        <td class="name-col">曾柏凱</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+    <tr>
+        <td>15</td>
+        <td class="time-col">11:08 - 11:15</td>
+        <td class="name-col">邵雅渦</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+    <tr>
+        <td>16</td>
+        <td class="time-col">11:15 - 11:22</td>
+        <td class="name-col">陳柏亘</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+    <tr>
+        <td>17</td>
+        <td class="time-col">11:22 - 11:29</td>
+        <td class="name-col">黃勝彥</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+    <tr>
+        <td>18</td>
+        <td class="time-col">11:29 - 11:36</td>
+        <td class="name-col">楊廂甯</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+    <tr>
+        <td>19</td>
+        <td class="time-col">11:36 - 11:43</td>
+        <td class="name-col">林幼鎂</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+    <tr>
+        <td>20</td>
+        <td class="time-col">11:43 - 11:50</td>
+        <td class="name-col">林宜諠</td>
+        <td><span class="status-badge">準備就緒</span></td>
+    </tr>
+    
+                </tbody>
+            </table>
+        </div>
+
+        <footer>
+            <p>© 地震學課程小組 · 網頁已針對行動裝置最佳化</p>
+        </footer>
+    </div>
+</body>
+</html>
